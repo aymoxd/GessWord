@@ -1,0 +1,26 @@
+
+export const words = [
+    "apple",
+    "music",
+    "aymane",
+    "film",
+    "train",
+    "stone",
+    "mother",
+    "animal",
+    "world",
+    "green",
+    "magic",
+    "tiger",
+    "light",
+    "planet",
+    "dream",
+    "ocean",
+    "smile",
+    "bridge",
+    "secret",
+    "forest",
+    "shadow",
+    "castle",
+    "puzzle"
+];
