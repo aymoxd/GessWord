@@ -71,13 +71,13 @@ function checkTry(rowIndex){
        const correctLetter = randomWord[j].toUpperCase();
 
        if(letter === correctLetter){
-         input.style.background = "#008236";
+         input.style.background = "#008236"; //green
          input.style.color = "white";
-       } else if(randomWord.includes(letter)){
-         input.style.background = "#f0b100";
+       } else if(randomWord.toUpperCase().includes(letter) && letter !== correctLetter){
+         input.style.background = "#f0b100";  //yellow
          input.style.color = "white";
        } else{
-          input.style.background = "#E7000B";
+          input.style.background = "#E7000B";  //red
           input.style.color = "white";
        }
       }
@@ -85,7 +85,7 @@ function checkTry(rowIndex){
 }
 for (let i = 0; i < 5; i++) {
   for (let j = 0; j < randomWord.length; j++) {
-    const lastInput = document.getElementById(`letter-${i}-${j}`);
+    const lastInput = document.getElementById(`letter-${i}-${randomWord.length-1}`);
      lastInput.addEventListener('input',()=>{
       checkTry(i);
      });
