@@ -11,7 +11,7 @@ function generateArea(){
   inputs.innerHTML = "";
   for (let i = 0; i < 5; i++) {
       inputs.innerHTML += `
-             <div class="tryDiv flex items-center justify-between">
+             <div id="inputBox${i}" class="tryDiv flex items-center justify-between">
         </div>
      `;
      const tryDiv = document.querySelectorAll(".tryDiv");
@@ -22,20 +22,7 @@ function generateArea(){
    }
      
   }
-/* it
-     for(let i = 0 ; i < 5 ; i++){
-     inputs.innerHTML += `
-             <div id="inputBox${i}" class="flex items-center justify-between">
-        </div>
-     `;
-     const inputBox = document.getElementById(`inputBox${i}`);
-     for (let j = 0; j < randomWord.length; j++) {
-      inputBox.innerHTML += `
-    <input id="letter-${i}-${j}" class="bg-white border-b-4 outline-none text-center  text-2xl border-blue-900 w-10 h-10" type="text" maxlength="1">
-      `;
-     }
-    }
-     */
+
 }
 
 function setAutoFocus(){
@@ -49,11 +36,11 @@ function setAutoFocus(){
     input.addEventListener("input",()=>{
       const nextInput = allInputs[index + 1];
       if(nextInput && input.value !== "" ){
-///////////////////////////////////
-        if(nextInput === allInputs[randomWord.length]){
-          checkTry();
-        }
-/////////////////////////////////////
+
+      //  if(nextInput === allInputs[randomWord.length]){
+      //    checkTry();
+       // }
+
         nextInput.focus();
       }
     });
@@ -76,23 +63,35 @@ function setAutoFocus(){
 generateArea();
 
 
-function checkTry(){
-      const divTry = document.querySelectorAll('.tryDiv input');
-  for (let i = 0; i < 5; i++) {
-     for (let j = 0; j < randomWord.length; j++) {
-         if(divTry[i])
-     }
+function checkTry(rowIndex){
+      const divTry = document.querySelectorAll(`#inputBox${rowIndex} input`);
+      for (let j = 0; j < randomWord.length; j++) {
+       const input = divTry[j];
+       const letter = input.value.toUpperCase();
+       const correctLetter = randomWord[j].toUpperCase();
 
-
-      if(divTry[i].value === randomWord[i]){
-        console.log("correct");
-        divTry[i].style.background = "#008236";
-        divTry[i].style.color = "white";
+       if(letter === correctLetter){
+         input.style.background = "#008236";
+         input.style.color = "white";
+       } else if(randomWord.includes(letter)){
+         input.style.background = "#f0b100";
+         input.style.color = "white";
+       } else{
+          input.style.background = "#E7000B";
+          input.style.color = "white";
+       }
       }
-}
 
 }
-
+for (let i = 0; i < 5; i++) {
+  for (let j = 0; j < randomWord.length; j++) {
+    const lastInput = document.getElementById(`letter-${i}-${j}`);
+     lastInput.addEventListener('input',()=>{
+      checkTry(i);
+     });
+  }
+  
+}
 
 
 setAutoFocus();
