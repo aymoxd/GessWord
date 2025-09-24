@@ -8,11 +8,18 @@
 </head>
 <body class="bg-gradient-to-tr from-slate-300 to-slate-500 flex px-5 sm:px-10 md:px-20 lg:px-48 h-dvh lg:h-dvh justify-center items-center">
 
-    <div id="game" class="flex bg-white/50 shadow-lg w-full sm:max-w[700px] bg- rounded-xl h-full sm:h-[400px] flex-col sm:flex-row gap-2 sm:gap-5 justify-center items-center">
+  <div id="firstPage" class="absolute flex flex-col items-center justify-center bg-gradient-to-tr from-blue-500 via-cyan-500 to-purple-600 h-dvh w-full space-y-7">
+        <h1 class="font-bold text-6xl md:text-8xl text-white/50">GessWord</h1>
+        <button id="play"  class="bg-black/50 w-52 h-12 text-white rounded-full font-semibold active:scale-95 transition-all duration-300 cursor-pointer">Play</button>
+        <button id="english" class="bg-black/50 w-52 h-12 text-white rounded-full font-semibold active:scale-95 transition-all duration-300 cursor-pointer">English</button>
+        <button id="arabic" class="bg-black/50 w-52 h-12 text-white rounded-full font-semibold active:scale-95 transition-all duration-300 cursor-pointer">Arabic</button>
+  </div>
+
+    <div id="game" class="hidden bg-white/50 shadow-lg w-full sm:max-w[700px] bg- rounded-xl h-full sm:h-[400px] flex-col sm:flex-row gap-2 sm:gap-5 justify-center items-center">
 
         <!-- info-->
   <div class="p-2 sm:p-5 text-sm sm:text-base w-full sm:h-full space-y-2 sm:space-y-5">
-        <h1 class="text-lg sm:text-xl text-center text-gray-700">key colors</h1>
+        <h1 id="hack" class="text-lg sm:text-xl text-center text-gray-700">key colors</h1>
         <div class="bg-white border border-gray-300 rounded-md px-3 py-3 flex gap-2 items-center"><span class="w-6 h-6 bg-green-700"></span><p class="text-gray-700">Letter is right and in place</p></div>
         <div class="bg-white border border-gray-300 rounded-md px-3 py-3 flex gap-2 items-center"><span class="w-6 h-6 bg-yellow-500"></span><p class="text-gray-700">Letter is right but not in place</p></div>
         <div class="bg-white border border-gray-300 rounded-md px-3 py-3 flex gap-2 items-center"><span class="w-6 h-6 bg-red-600"></span><p class="text-gray-700">Letter is Wrong and not exist in Word</p></div>

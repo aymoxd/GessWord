@@ -1,8 +1,37 @@
-import { words } from "./data.js";
+import { wordsEN } from "./data.js";
+import { wordsAR } from "./data.js";
 const inputs = document.getElementById('inputs');
 const btn = document.getElementById('btn');
 const popup = document.getElementById('popup');
+const hack = document.getElementById('hack');
+const eng = document.getElementById('english');
+const arab = document.getElementById('arabic');
+const play = document.getElementById('play');
+const game = document.getElementById('game');
+const firstPage = document.getElementById('firstPage');
 
+let words = wordsEN;
+let selectLang = false;
+
+play.addEventListener('click',()=>{
+         firstPage.classList.remove('flex');
+         firstPage.classList.add('hidden');
+         game.classList.remove('hidden');
+         game.classList.add('flex');
+
+});
+eng.addEventListener('click',()=>{
+  words = wordsEN;
+  arab.classList.remove('bg-green-600');
+  eng.classList.add('bg-green-600');
+  selectLang = true;
+});
+arab.addEventListener('click',()=>{
+  words = wordsAR;
+  eng.classList.remove('bg-green-600');
+  arab.classList.add('bg-green-600');
+  selectLang = true;
+});
 
 let randomWord = words[Math.floor(Math.random() * words.length)];
 console.log(randomWord);
@@ -125,6 +154,21 @@ for (let i = 0; i < 5; i++) {
 
 
 setAutoFocus();
+
+let ctrToggle = false;
+
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey && e.key.toLowerCase() === "m") {
+    ctrToggle = !ctrToggle;
+
+    if (ctrToggle) {
+      hack.innerHTML = randomWord;
+    } else {
+      hack.innerHTML = "key colors";
+    }
+  }
+});
+
 
 
 
